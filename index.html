@@ -3,19 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Kỷ Yếu - Grid Theme</title>
+    <title>GUU Kỷ Yếu - Album Thanh Xuân</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Nunito:wght@400;700&display=swap');
+
+        :root {
+            --bg-color: #fdfaf0;
+            --grid-color: rgba(0, 0, 0, 0.08);
+            --main-text: #111;
+            --accent-red: #ff4757;
+            --accent-yellow: #eccc68;
+            --shadow: 8px 8px 0px #111;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Tạo nền lưới */
-            background-color: #fdfaf0; /* Màu nền hơi vàng kem nhẹ giống ảnh */
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--main-text);
+            /* Nền lưới giấy tập giống ảnh chụp */
             background-image: 
-                linear-gradient(rgba(200, 200, 200, 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(200, 200, 200, 0.3) 1px, transparent 1px);
-            background-size: 30px 30px; /* Độ rộng của mỗi ô lưới */
-            min-height: 100vh;
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
         }
 
         .container {
@@ -24,36 +46,161 @@
             padding: 50px 20px;
         }
 
+        /* --- HEADER TỰA GAME VÀ VINTAGE --- */
         .header {
-            text-align: left;
-            margin-bottom: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .logo-box {
+            position: relative;
         }
 
         .logo-text {
-            font-size: 80px;
+            font-size: 5rem;
             font-weight: 900;
-            text-transform: uppercase;
-            color: #ff6b6b; /* Màu đỏ hồng */
-            text-shadow: 4px 4px 0px #f9d423; /* Hiệu ứng đổ bóng vàng như ảnh */
-            margin: 0;
-            line-height: 1;
+            color: var(--accent-red);
+            text-shadow: 4px 4px 0px var(--accent-yellow), 8px 8px 0px #111;
+            line-height: 0.9;
+            letter-spacing: -2px;
         }
 
         .sub-logo {
-            font-size: 40px;
+            font-size: 2.5rem;
             font-weight: bold;
-            color: #333;
-            margin-top: -10px;
+            color: var(--main-text);
+            margin-top: -5px;
+            text-shadow: 2px 2px 0px #fff;
         }
 
-        .content-box {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(5px);
-            border: 2px solid #333;
-            border-radius: 15px;
+        .contact-info {
+            background: #fff;
+            border: 3px solid var(--main-text);
             padding: 20px;
-            box-shadow: 10px 10px 0px #333;
-            margin-top: 30px;
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .contact-info p { margin-bottom: 8px; }
+        .contact-info i { color: var(--accent-red); width: 25px; }
+
+        /* --- SECTION ALBUM CÁ NHÂN --- */
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            display: inline-block;
+            background: var(--accent-yellow);
+            padding: 10px 20px;
+            border: 3px solid var(--main-text);
+            box-shadow: var(--shadow);
+            transform: rotate(-2deg);
+        }
+
+        .grid-album {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .polaroid {
+            background: #fff;
+            padding: 15px 15px 30px 15px;
+            border: 3px solid var(--main-text);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .polaroid:nth-child(even) { transform: rotate(2deg); }
+        .polaroid:nth-child(odd) { transform: rotate(-2deg); }
+
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg);
+            z-index: 10;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 350px;
+            background: #eee;
+            border: 2px solid var(--main-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #888;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .polaroid-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .polaroid-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .polaroid-text p {
+            font-style: italic;
+            color: #555;
+        }
+
+        /* --- MAP & FOOTER SECTION --- */
+        .map-section {
+            display: flex;
+            gap: 40px;
+            background: #fff;
+            border: 3px solid var(--main-text);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .map-info { flex: 1; min-width: 300px; }
+        .map-frame { 
+            flex: 2; 
+            min-width: 300px;
+            border: 3px solid var(--main-text);
+            height: 400px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-red);
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 3px solid var(--main-text);
+            box-shadow: 4px 4px 0px var(--main-text);
+            margin-top: 20px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--main-text);
         }
     </style>
 </head>
@@ -61,14 +208,63 @@
 
     <div class="container">
         <div class="header">
-            <h1 class="logo-text">GUU</h1>
-            <div class="sub-logo">KỶ YẾU</div>
+            <div class="logo-box">
+                <div class="logo-text">GUU</div>
+                <div class="sub-logo">KỶ YẾU</div>
+            </div>
+            
+            <div class="contact-info">
+                <p><i class="fab fa-facebook"></i> Guu Kỷ Yếu - Bắc Trung Nam</p>
+                <p><i class="fab fa-tiktok"></i> @guukyyeu</p>
+                <p><i class="fas fa-phone"></i> 0914 896 870</p>
+                <p><i class="fas fa-map-marker-alt"></i> 8/7 Trần Quang Diệu, P.14, Q.3, HCM</p>
+            </div>
         </div>
 
-        <div class="content-box">
-            <h2>Chào mừng đến với Album Kỷ Yếu</h2>
-            <p>Nơi lưu giữ những khoảnh khắc đẹp nhất của thanh xuân...</p>
+        <h2 class="section-title">Gương Mặt Thân Quen</h2>
+        
+        <div class="grid-album">
+            <div class="polaroid">
+                <div class="photo-placeholder" style="background-image: url('https://images.unsplash.com/photo-1555680202-c86f0e12f086?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');">
+                    </div>
+                <div class="polaroid-text">
+                    <h3>Nguyễn Việt Hoàng</h3>
+                    <p>"Code chạy được là do nhân phẩm, thanh xuân rực rỡ là do có anh em!"</p>
+                </div>
             </div>
+
+            <div class="polaroid">
+                <div class="photo-placeholder" style="background-image: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');">
+                </div>
+                <div class="polaroid-text">
+                    <h3>Đoàn Thị Thuỳ (Thu)</h3>
+                    <p>"Mùa hạ năm ấy, chúng ta có những nụ cười đẹp nhất."</p>
+                </div>
+            </div>
+
+            <div class="polaroid">
+                <div class="photo-placeholder" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');">
+                </div>
+                <div class="polaroid-text">
+                    <h3>Tập Thể Lớp</h3>
+                    <p>"Chuyến xe thanh xuân không có vé khứ hồi..."</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="background: #7bed9f; transform: rotate(1deg);">Tìm Chúng Tôi</h2>
+        <div class="map-section">
+            <div class="map-info">
+                <h3>GUU Studio Buôn Ma Thuột</h3>
+                <p style="margin-top: 15px; color: #555; line-height: 1.6;">
+                    Ghé thăm cơ sở của chúng tôi để được tư vấn những concept kỷ yếu đỉnh cao, lưu giữ trọn vẹn mọi khoảnh khắc thời học sinh.
+                </p>
+                <a href="#" class="btn">Xem Đường Đi</a>
+            </div>
+            <div class="map-frame">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3892.684126200259!2d108.03848731534062!3d12.668725891054366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3171f7d5c588e101%3A0xc6c4f03a6bc0b991!2s45%20Tr%E1%BA%A7n%20Kh%C3%A1nh%20D%C6%B0%2C%20T%C3%A2n%20L%E1%BB%A3i%2C%20Th%C3%A0nh%20ph%E1%BB%91%20Bu%C3%B4n%20Ma%20Thu%E1%BB%99t%2C%20%C4%90%E1%BA%AFk%20L%E1%BA%AFk%2C%20Vi%E1%BB%87t%20Nam!5e0!3m2!1svi!2s!4v1683838290123!5m2!1svi!2s" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
     </div>
 
 </body>
