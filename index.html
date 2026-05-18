@@ -3,289 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raw ARK PvE - Tuyển Thành Viên ARK Mobile</title>
+    <title>RAW ARK PVE - Chinh Phục Thế Giới Sinh Tồn</title>
     <style>
-        /* Reset & Base Styles */
+        /* Import font chữ phong cách Gaming */
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Rajdhani:wght@500;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #121812;
-            color: #e0e0e0;
-            line-height: 1.6;
+            background: #0f171e; /* Màu nền tối sâu */
+            color: #d1d5db;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+        /* Hình nền cố định tạo hiệu ứng chiều sâu (Parallax) */
+        .bg-image {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(15, 23, 30, 0.85), rgba(15, 23, 30, 0.95)),
+                        url('https://images.unsplash.com/photo-1542228262-3d663b306a53?q=80&w=1920') center/cover;
+            z-index: -1;
         }
 
-        /* Container */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
+        /* Thanh điều hướng Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(15, 23, 30, 0.7);
+            backdrop-filter: blur(10px); /* Hiệu ứng kính mờ */
+            border-bottom: 1px solid #f59e0b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        /* Hero Section */
-        header {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(18, 24, 18, 1)), 
-                        url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000') no-repeat center center/cover;
-            padding: 100px 20px;
-            text-align: center;
-            border-bottom: 3px solid #4caf50;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            color: #4caf50;
-            text-transform: uppercase;
+        .navbar .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem;
+            color: #f59e0b;
+            text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
             letter-spacing: 2px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
-        header p {
+        .btn-glow {
+            background: transparent;
+            color: #f59e0b;
+            border: 2px solid #f59e0b;
+            padding: 10px 25px;
             font-size: 1.2rem;
-            color: #ffb300;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
-
-        .btn-join {
-            display: inline-block;
-            background-color: #ffb300;
-            color: #121812;
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 179, 0, 0.4);
-        }
-
-        .btn-join:hover {
-            background-color: #4caf50;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
-        }
-
-        /* Sections General */
-        section {
-            padding: 60px 0;
-            border-bottom: 1px solid #233023;
-        }
-
-        section h2 {
-            text-align: center;
-            font-size: 2rem;
-            color: #4caf50;
-            margin-bottom: 40px;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
             text-transform: uppercase;
-            position: relative;
         }
 
-        section h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: #ffb300;
-            margin: 10px auto 0;
+        .btn-glow:hover {
+            background: #f59e0b;
+            color: #0f171e;
+            box-shadow: 0 0 20px #f59e0b;
         }
 
-        /* Server Info Grid */
-        .grid-info {
+        /* Khung chứa nội dung chính */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Phần Hero (Giới thiệu đầu trang) */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .hero h1 span {
+            color: #10b981; /* Màu xanh lá Neon */
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #9ca3af;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Bố cục dạng lưới cho các thẻ (Cards) */
+        .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
 
-        .card {
-            background-color: #1a231a;
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 4px solid #4caf50;
-            transition: transform 0.3s;
+        /* Thiết kế thẻ Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid #10b981;
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+            border-top-color: #f59e0b;
+            background: rgba(255, 255, 255, 0.06);
         }
 
-        .card h3 {
-            color: #ffb300;
+        .glass-card h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+        }
+
+        .glass-card ul {
+            list-style: none;
+        }
+
+        .glass-card ul li {
+            font-size: 1.25rem;
             margin-bottom: 15px;
-        }
-
-        .card ul {
-            list-style-type: none;
-        }
-
-        .card ul li {
-            margin-bottom: 8px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
         }
 
-        /* Gifts Section */
-        .gift-box {
-            background: linear-gradient(135deg, #1a231a, #2a3a2a);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid #ffb300;
+        .glass-card ul li:last-child {
+            border-bottom: none;
         }
 
-        .gift-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+        .highlight {
+            color: #f59e0b;
+            font-weight: bold;
         }
 
-        .gift-item {
-            background-color: #121812;
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: 1px solid #4caf50;
-            font-size: 0.95rem;
+        /* Thẻ hiển thị Luật lệ (Chiếm toàn bộ chiều ngang) */
+        .rules-section {
+            grid-column: 1 / -1; 
+            border-top-color: #ef4444; /* Viền đỏ cảnh báo */
         }
 
-        /* Rules Section */
-        .rules-list {
-            background-color: #1a231a;
-            padding: 30px;
-            border-radius: 10px;
+        .rules-section h2 {
+            color: #ef4444;
         }
 
-        .rules-list ol {
+        .rules-section ol {
             padding-left: 20px;
+            font-size: 1.2rem;
+            color: #d1d5db;
         }
 
-        .rules-list li {
-            margin-bottom: 12px;
-            font-size: 1.05rem;
+        .rules-section ol li {
+            margin-bottom: 15px;
+            line-height: 1.8;
         }
 
-        .rules-list strong {
-            color: #e53935;
-        }
-
-        /* Footer */
+        /* Chân trang */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            background-color: #0b0f0b;
-            font-size: 0.9rem;
-            color: #777;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0,0,0,0.5);
+            font-size: 1.1rem;
         }
 
-        /* Responsive */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Reponsive cho Mobile */
         @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            section h2 { font-size: 1.6rem; }
+            .hero h1 { font-size: 3rem; }
+            .navbar { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .btn-glow { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <header>
-        <div class="container">
-            <h1>RAW ARK PvE</h1>
-            <p>🦕 Server Sinh Tồn Chân Thực - Cộng Đồng Văn Minh - Không Pay To Win 🦖</p>
-            <!-- Thay link Nhóm của bạn vào href dưới đây -->
-            <a href="https://zalo.me/... hoặc https://discord.gg/..." target="_blank" class="btn-join">Gia Nhập Server Ngay</a>
-        </div>
-    </header>
+    <div class="bg-image"></div>
 
-    <div class="container">
+    <nav class="navbar">
+        <div class="logo">RAW ARK</div>
+        <a href="https://zalo.me/..." target="_blank" class="btn-glow">Tham Gia Ngay</a>
+    </nav>
+
+    <div class="main-container">
         
-        <!-- Giới thiệu -->
-        <section id="about">
-            <h2>Về Chúng Tôi</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
-                Bạn đã chán ngấy các server lạm phát, admin lạm quyền hay những bộ tộc "toxic"? 
-                Chào mừng đến với <strong>Raw ARK PvE</strong> trên ARK Mobile. Nơi chúng tôi giữ nguyên bản chất sinh tồn cày cuốc, 
-                nói không với thương mại hóa, tạo sân chơi công bằng và bền vững cho mọi Tamer!
-            </p>
-        </section>
+        <header class="hero">
+            <h1>Sinh Tồn <span>Chân Thực</span></h1>
+            <p>Nơi kỹ năng quyết định tất cả. Không Pay To Win, không lạm quyền, cộng đồng ARK Mobile văn minh và công bằng nhất.</p>
+        </header>
 
-        <!-- Thông số Server -->
-        <section id="features">
-            <h2>Thông Số & Tính Năng</h2>
-            <div class="grid-info">
-                <div class="card">
-                    <h3>📊 Rate Server</h3>
-                    <ul>
-                        <li><span>EXP:</span> <strong>x2</strong></li>
-                        <li><span>Taming:</span> <strong>x3</strong></li>
-                        <li><span>Harvest:</span> <strong>x2</strong></li>
-                        <li><span>Breeding:</span> <strong>x5</strong></li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>🛡️ Chế Độ Chơi</h3>
-                    <ul>
-                        <li><span>Thể loại:</span> <strong>PvE (Cày cuốc)</strong></li>
-                        <li><span>Độ khó:</span> <strong>Brutal / Hard</strong></li>
-                        <li><span>Hồi phục:</span> <strong>Ổn định</strong></li>
-                        <li><span>Anti-Cheat:</span> <strong>Cực nghiêm ngặt</strong></li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>🤝 Tiện Ích Độc Quyền</h3>
-                    <ul>
-                        <li><span>Sự kiện:</span> <strong>Hàng tuần</strong></li>
-                        <li><span>Hỗ trợ:</span> <strong>Admin 24/7</strong></li>
-                        <li><span>Khu công cộng:</span> <strong>Khu Trade / Chợ</strong></li>
-                        <li><span>Cộng đồng:</span> <strong>Vui vẻ, giúp đỡ nhau</strong></li>
-                    </ul>
-                </div>
+        <div class="content-grid">
+            
+            <div class="glass-card">
+                <h2>📊 Thông Số Server</h2>
+                <ul>
+                    <li>Kinh nghiệm (EXP) <span class="highlight">x2</span></li>
+                    <li>Thuần hóa (Taming) <span class="highlight">x3</span></li>
+                    <li>Thu thập (Harvest) <span class="highlight">x2</span></li>
+                    <li>Lai tạo (Breeding) <span class="highlight">x5</span></li>
+                    <li>Độ khó <span class="highlight">Brutal / Hard</span></li>
+                </ul>
             </div>
-        </section>
 
-        <!-- Quà Tân Thủ -->
-        <section id="gifts">
-            <h2>🎁 Hỗ Trợ Tân Thủ</h2>
-            <div class="gift-box">
-                <p style="font-size: 1.2rem; margin-bottom: 15px; color: #fff;">Chỉ cần vào server và liên hệ Admin, bạn sẽ nhận ngay gói quà khởi đầu cực chất:</p>
-                <div class="gift-list">
-                    <div class="gift-item">🦖 1 Thú cưỡi cơ bản (X saddle)</div>
-                    <div class="gift-item">🛡️ 1 Bộ giáp sắt (Chỉ số ổn định)</div>
-                    <div class="gift-item">⛏️ Bộ công cụ Kim Loại (Metal Tools)</div>
-                    <div class="gift-item">💊 Thức ăn và Thuốc tăng lực</div>
-                </div>
-                <p style="margin-top: 20px; font-size: 0.9rem; color: #ffb300;">*Quà tân thủ giúp bạn dễ dàng làm quen ở giai đoạn đầu, không làm mất chất cày cuốc!</p>
+            <div class="glass-card">
+                <h2>🎁 Hỗ Trợ Tân Thủ</h2>
+                <ul>
+                    <li>Thú cưỡi cơ bản <span class="highlight">X Saddle</span></li>
+                    <li>Trang bị bảo vệ <span class="highlight">Giáp sắt</span></li>
+                    <li>Công cụ khai thác <span class="highlight">Metal Tools</span></li>
+                    <li>Gói sinh tồn <span class="highlight">Thức ăn & Thuốc</span></li>
+                </ul>
+                <p style="margin-top: 15px; color: #9ca3af; font-size: 1.05rem;">*Inbox trực tiếp Admin trong Discord hoặc Zalo để nhận phần quà khởi đầu.</p>
             </div>
-        </section>
 
-        <!-- Luật Server -->
-        <section id="rules">
-            <h2>📜 Luật Server (Vui lòng đọc kỹ)</h2>
-            <div class="rules-list">
+            <div class="glass-card rules-section">
+                <h2>⚠️ Bộ Luật Sinh Tồn</h2>
                 <ol>
-                    <li><strong>Không block tài nguyên lớn:</strong> Cấm xây nhà chặn hang động, đỉnh núi có kim loại/obsidian.</li>
-                    <li><strong>Ý thức công cộng:</strong> Không được thả khủng long bừa bãi ngoài đường gây lag server.</li>
-                    <li><strong>Tôn trọng người khác:</strong> Không xúc phạm, phân biệt vùng miền hay phá hoại công trình của bộ tộc khác.</li>
-                    <li><strong>Nghiêm cấm Hack/Bug:</strong> Phát hiện sử dụng phần mềm thứ 3 hoặc bug game sẽ bị <strong>BAN VĨNH VIỄN</strong>.</li>
+                    <li><strong>Bảo vệ tài nguyên:</strong> Cấm tuyệt đối xây dựng công trình chặn cửa hang động, các mỏ farm kim loại (Metal), thủy tinh đen (Obsidian).</li>
+                    <li><strong>Bảo vệ máy chủ:</strong> Hạn chế vứt đồ rác ra môi trường, cấm thả rông thú cưỡi bừa bãi tại các khu vực công cộng gây giật lag.</li>
+                    <li><strong>Văn hóa game thủ:</strong> Tôn trọng đồng người chơi. Mọi hành vi chửi thề, phân biệt vùng miền, phá hoại công trình của Tribe khác đều bị xử lý nghiêm khắc.</li>
+                    <li><strong>Không gian lận:</strong> Phát hiện sử dụng phần mềm thứ 3 (Hack/Cheat), lợi dụng Bug game sẽ nhận hình phạt <span style="color:#ef4444; font-weight:bold;">BAN VĨNH VIỄN</span> không cảnh báo trước.</li>
                 </ol>
             </div>
-        </section>
-
+        </div>
     </div>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Raw ARK PvE Mobile. Thân thiện - Bền vững - Đẳng cấp.</p>
-        <p style="font-size: 0.8rem; margin-top: 5px;">Designed for ARK Mobile Players</p>
+        <p>&copy; 2026 RAW ARK PVE Mobile. Bền vững - Đẳng cấp. Designed by HOANGKUN.</p>
     </footer>
 
 </body>
