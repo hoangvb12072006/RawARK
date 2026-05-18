@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ff9900; /* Vàng cam hổ phách */
+            --primary-color: #ff9900;
             --danger-color: #ff3333;
             --bg-dark: #0d0d0d;
             --panel-bg: #161616;
             --text-main: #e0e0e0;
-            --success-color: #00ffcc; /* Màu xanh neon cho giá tiền */
+            --success-color: #00ffcc;
         }
 
         * {
@@ -107,15 +107,8 @@
             border-left: 4px solid var(--primary-color);
         }
 
-        .shop-notice strong {
-            color: #fff;
-        }
-
-        .shop-notice ul {
-            margin-left: 20px;
-            margin-top: 8px;
-            color: #aaa;
-        }
+        .shop-notice strong { color: #fff; }
+        .shop-notice ul { margin-left: 20px; margin-top: 8px; color: #aaa; }
 
         /* --- SECTION TITLE --- */
         .section-title {
@@ -130,6 +123,11 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        .section-title img {
+            height: 40px;
+            object-fit: contain;
         }
 
         /* --- GRIDS --- */
@@ -161,8 +159,9 @@
             background: #1c1c1c;
         }
 
+        /* CẬP NHẬT: Box chứa ảnh */
         .product-img {
-            height: 120px;
+            height: 140px; /* Tăng chiều cao lên một chút để ảnh to dễ nhìn hơn */
             background: #090909;
             display: flex;
             justify-content: center;
@@ -170,13 +169,25 @@
             font-size: 3rem;
             border: 1px solid #1f1f1f;
             position: relative;
+            overflow: hidden; /* Cắt phần ảnh thừa nếu có */
         }
 
         .product-img::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            z-index: 1;
+        }
+
+        /* CẬP NHẬT: CSS chuẩn cho tất cả các loại ảnh (Icon, Hình chữ nhật, Hình vuông) */
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ảnh sẽ tự động co lại để hiển thị đầy đủ, không bị cắt mép */
+            position: relative;
+            z-index: 2;
+            padding: 10px; /* Tạo khoảng trống nhỏ xung quanh ảnh cho đẹp */
         }
 
         .product-img span {
@@ -264,7 +275,6 @@
 
     <div class="shop-wrapper">
         
-        <!-- HEADER SHOP -->
         <header class="shop-header">
             <div class="shop-title">
                 <h1>RAW ARK SHOP</h1>
@@ -273,7 +283,6 @@
             <a href="index.html" class="btn-back">◀ Quay Lại Trang Chủ</a>
         </header>
 
-        <!-- LƯƯ Ý GIAO DỊCH -->
         <div class="shop-notice">
             <strong>📢 QUY TRÌNH GIAO DỊCH AN TOÀN:</strong>
             <ul>
@@ -282,17 +291,15 @@
             </ul>
         </div>
 
-        <!-- DANH MỤC 1: HỔ PHÁCH -->
         <section>
             <div class="section-title">
-    <img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Amber"> 
-    GÓI HỔ PHÁCH (AMBER PACKAGES)
-</div>
+                <img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Amber"> 
+                GÓI HỔ PHÁCH (AMBER PACKAGES)
+            </div>
             <div class="shop-grid">
                 
-                <!-- Gói 1 -->
                 <div class="product-card">
-                   <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách ARK Mobile" class="amber-icon"></div>
+                    <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách"></div>
                     <div class="product-info">
                         <h3>1.000 Hổ Phách</h3>
                         <p>Gói sơ cấp dành cho Tamer cày cuốc nhẹ nhàng.</p>
@@ -303,9 +310,8 @@
                     </div>
                 </div>
 
-                <!-- Gói 2 -->
                 <div class="product-card">
-                     <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách ARK Mobile" class="amber-icon"></div>
+                     <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách"></div>
                     <div class="product-info">
                         <h3>5.000 Hổ Phách</h3>
                         <p>Gói cơ bản hỗ trợ sắm sửa tiện ích.</p>
@@ -316,9 +322,8 @@
                     </div>
                 </div>
 
-                <!-- Gói 3 -->
                 <div class="product-card">
-                     <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách ARK Mobile" class="amber-icon"></div>
+                     <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách"></div>
                     <div class="product-info">
                         <h3>10.000 Hổ Phách</h3>
                         <p>Gói trung cấp được ưa chuộng nhiều.</p>
@@ -329,9 +334,8 @@
                     </div>
                 </div>
 
-                <!-- Gói 4 -->
                 <div class="product-card">
-                     <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách ARK Mobile" class="amber-icon"></div>
+                     <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách"></div>
                     <div class="product-info">
                         <h3>30.000 Hổ Phách</h3>
                         <p>Gói cao cấp, thoải mái chi tiêu shopping.</p>
@@ -342,9 +346,8 @@
                     </div>
                 </div>
 
-                <!-- Gói 5 -->
                 <div class="product-card">
-                    <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách ARK Mobile" class="amber-icon"></div>
+                    <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách"></div>
                     <div class="product-info">
                         <h3>50.000 Hổ Phách</h3>
                         <p>Gói đại gia, nâng cấp không lo nghĩ.</p>
@@ -355,9 +358,8 @@
                     </div>
                 </div>
 
-                <!-- Gói 6 -->
                 <div class="product-card">
-                   <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách ARK Mobile" class="amber-icon"></div>
+                   <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách"></div>
                     <div class="product-info">
                         <h3>80.000 Hổ Phách</h3>
                         <p>Gói siêu cấp tích trữ Amber số lượng lớn.</p>
@@ -368,9 +370,8 @@
                     </div>
                 </div>
 
-                <!-- Gói 7 -->
                 <div class="product-card">
-                     <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách ARK Mobile" class="amber-icon"></div>
+                     <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách"></div>
                     <div class="product-info">
                         <h3>120.000 Hổ Phách</h3>
                         <p>Gói cực đại cho các bộ tộc lớn cày chiến.</p>
@@ -381,9 +382,8 @@
                     </div>
                 </div>
 
-                <!-- Gói 8 -->
                 <div class="product-card">
-                     <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách ARK Mobile" class="amber-icon"></div>
+                     <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách"></div>
                     <div class="product-info">
                         <h3>200.000 Hổ Phách</h3>
                         <p>Gói tối thượng - Cực kỳ tiết kiệm và tối ưu.</p>
@@ -394,9 +394,8 @@
                     </div>
                 </div>
 
-                <!-- Gói 9 -->
                 <div class="product-card" style="border-top-color: var(--success-color);">
-                    <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách ARK Mobile" class="amber-icon"></div>
+                    <div class="product-img"><img src="https://ark.wiki.gg/images/Mobile_Ancient_Amber.png?c870d7" alt="Hổ Phách"></div>
                     <div class="product-info">
                         <h3>Hổ Phách Không Giới Hạn</h3>
                         <p>Gói VIP đặc quyền tối cao, xài tẹt ga vĩnh viễn.</p>
@@ -410,12 +409,10 @@
             </div>
         </section>
 
-        <!-- DANH MỤC 2: VŨ KHÍ & TRANG BỊ -->
         <section>
             <div class="section-title">⚔️ VŨ KHÍ & TRANG BỊ (GEARS)</div>
             <div class="shop-grid">
                 
-                <!-- Item 1 -->
                 <div class="product-card">
                     <div class="product-img"><span>⚔️</span></div>
                     <div class="product-info">
@@ -428,22 +425,20 @@
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-               <div class="product-card">
-    <div class="product-img"><img src="https://ark.wiki.gg/images/ArmorTekFemale.png?39ca90=&format=original" alt="Bộ Tek Huyền Thoại" class="amber-icon"></div>
-    <div class="product-info">
-        <h3>Bộ Tek Huyền Thoại</h3>
-        <p>Trọn bộ giáp Tek Tier phẩm chất Huyền Thoại tối tân.</p>
-    </div>
-    <div class="product-footer">
-        <div class="product-price">300.000đ</div>
-        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
-    </div>
-</div>
-
-                <!-- Item 3 -->
                 <div class="product-card">
-                   <div class="product-img"><img src="https://ultahost.com/blog/wp-content/uploads/2024/12/123-800x451.jpg" alt="Bộ Gíap Metal" class="amber-icon"></div>
+                    <div class="product-img"><img src="https://ark.wiki.gg/images/ArmorTekFemale.png?39ca90=&format=original" alt="Bộ Tek Huyền Thoại"></div>
+                    <div class="product-info">
+                        <h3>Bộ Tek Huyền Thoại</h3>
+                        <p>Trọn bộ giáp Tek Tier phẩm chất Huyền Thoại tối tân.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">300.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                   <div class="product-img"><img src="https://ultahost.com/blog/wp-content/uploads/2024/12/123-800x451.jpg" alt="Bộ Giáp Metal"></div>
                     <div class="product-info">
                         <h3>Bộ Giáp Metal</h3>
                         <p>Trọn bộ giáp sắt cứng cáp bảo vệ Tamer toàn diện.</p>
@@ -454,9 +449,8 @@
                     </div>
                 </div>
 
-                <!-- Item 4 -->
                 <div class="product-card">
-                    <div class="product-img"><img src="https://ultahost.com/blog/wp-content/uploads/2024/12/122-800x451.jpg" alt="Bộ Gíap Metal" class="amber-icon"></div>
+                    <div class="product-img"><img src="https://ultahost.com/blog/wp-content/uploads/2024/12/122-800x451.jpg" alt="Bộ Giáp Chống Nổ"></div>
                     <div class="product-info">
                         <h3>Bộ Giáp Chống Nổ</h3>
                         <p>Bộ trang bị đặc chủng giảm thiểu sát thương cháy nổ.</p>
@@ -470,7 +464,6 @@
             </div>
         </section>
 
-        <!-- FOOTER -->
         <footer>
             &copy; 2026 RAW ARK PVE | Hệ Thống Vận Hành Bởi <span>HOANGKUN</span>
         </footer>
