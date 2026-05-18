@@ -7,12 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ff9900;
+            --primary-color: #ff9900; /* Vàng cam hổ phách */
             --danger-color: #ff3333;
             --bg-dark: #0d0d0d;
-            --panel-bg: #1a1a1a;
+            --panel-bg: #161616;
             --text-main: #e0e0e0;
-            --success-color: #00ffcc;
+            --success-color: #00ffcc; /* Màu xanh neon cho giá tiền */
         }
 
         * {
@@ -26,7 +26,7 @@
             color: var(--text-main);
             font-family: 'Rajdhani', sans-serif;
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(255, 153, 0, 0.1) 0%, transparent 70%),
+                radial-gradient(circle at 50% 0%, rgba(255, 153, 0, 0.12) 0%, transparent 70%),
                 url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000');
             background-size: cover;
             background-attachment: fixed;
@@ -41,7 +41,7 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 35px;
         }
 
         /* --- HEADER SHOP --- */
@@ -49,7 +49,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #333;
+            border-bottom: 2px solid #252525;
             padding-bottom: 20px;
             flex-wrap: wrap;
             gap: 20px;
@@ -57,11 +57,12 @@
 
         .shop-title h1 {
             font-family: 'Teko', sans-serif;
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             color: var(--primary-color);
             line-height: 1;
             text-transform: uppercase;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.6);
+            letter-spacing: 2px;
         }
 
         .shop-title p {
@@ -69,6 +70,7 @@
             color: #888;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .btn-back {
@@ -77,8 +79,8 @@
             font-family: 'Teko', sans-serif;
             font-size: 1.4rem;
             color: #fff;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid #444;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #333;
             text-decoration: none;
             text-transform: uppercase;
             clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
@@ -86,56 +88,95 @@
         }
 
         .btn-back:hover {
-            background: #fff;
+            background: var(--primary-color);
             color: #000;
-            border-color: #fff;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(255, 153, 0, 0.4);
         }
 
-        /* --- DANH MỤC SẢN PHẨM --- */
+        /* --- NOTICE --- */
+        .shop-notice {
+            background: rgba(255, 153, 0, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+            background-color: var(--panel-bg);
+            border: 1px solid #222;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .shop-notice strong {
+            color: #fff;
+        }
+
+        .shop-notice ul {
+            margin-left: 20px;
+            margin-top: 8px;
+            color: #aaa;
+        }
+
+        /* --- SECTION TITLE --- */
+        .section-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 2.4rem;
+            color: #fff;
+            text-transform: uppercase;
+            border-bottom: 1px solid #252525;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- GRIDS --- */
         .shop-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
+            margin-bottom: 20px;
         }
 
-        /* Thẻ sản phẩm góc cạnh */
+        /* --- PRODUCT CARD --- */
         .product-card {
-            background: rgba(26, 26, 26, 0.85);
-            border: 1px solid #333;
+            background: rgba(22, 22, 22, 0.9);
+            border: 1px solid #282828;
             padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             position: relative;
-            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
-            border-top: 3px solid #444;
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+            border-top: 3px solid #3a3a3a;
             transition: 0.3s;
         }
 
         .product-card:hover {
             border-top-color: var(--primary-color);
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            background: #1c1c1c;
         }
 
-        /* Ảnh tượng trưng cho vật phẩm */
         .product-img {
-            height: 160px;
-            background: #111;
+            height: 120px;
+            background: #090909;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 3.5rem;
-            border: 1px solid #222;
+            font-size: 3rem;
+            border: 1px solid #1f1f1f;
             position: relative;
-            overflow: hidden;
         }
 
         .product-img::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
         }
 
         .product-img span {
@@ -148,15 +189,13 @@
             font-size: 1.8rem;
             color: #fff;
             text-transform: uppercase;
-            line-height: 1.2;
-            margin-bottom: 5px;
+            line-height: 1.1;
         }
 
         .product-info p {
             font-size: 0.95rem;
-            color: #aaa;
-            line-height: 1.4;
-            min-height: 40px;
+            color: #888;
+            margin-top: 4px;
         }
 
         .product-footer {
@@ -164,18 +203,20 @@
             justify-content: space-between;
             align-items: center;
             margin-top: auto;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.04);
         }
 
         .product-price {
             font-family: 'Teko', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             color: var(--success-color);
+            letter-spacing: 0.5px;
+            line-height: 1;
         }
 
         .btn-buy {
-            padding: 6px 20px;
+            padding: 6px 18px;
             font-family: 'Teko', sans-serif;
             font-size: 1.3rem;
             color: #000;
@@ -186,25 +227,13 @@
             clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
             cursor: pointer;
             transition: 0.2s;
+            line-height: 1;
         }
 
         .btn-buy:hover {
             background: #fff;
-            box-shadow: 0 0 10px var(--primary-color);
-        }
-
-        /* --- LƯU Ý MUA HÀNG --- */
-        .shop-notice {
-            background: rgba(255, 153, 0, 0.05);
-            border-left: 4px solid var(--primary-color);
-            padding: 20px;
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-
-        .shop-notice ul {
-            margin-left: 20px;
-            margin-top: 10px;
+            color: #000;
+            box-shadow: 0 0 12px var(--primary-color);
         }
 
         /* --- FOOTER --- */
@@ -214,15 +243,20 @@
             font-size: 0.95rem;
             margin-top: 20px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 20px;
         }
 
         footer span {
             color: var(--primary-color);
+            font-weight: bold;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .shop-header { flex-direction: column; text-align: center; }
-            .shop-title h1 { font-size: 2.8rem; }
+            .shop-title h1 { font-size: 3rem; }
+            .shop-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
         }
     </style>
 </head>
@@ -230,77 +264,225 @@
 
     <div class="shop-wrapper">
         
+        <!-- HEADER SHOP -->
         <header class="shop-header">
             <div class="shop-title">
                 <h1>RAW ARK SHOP</h1>
-                <p>Hệ thống cung cấp vật phẩm hỗ trợ Server</p>
+                <p>Hệ thống cung cấp vật phẩm & Amber Server</p>
             </div>
-            <a href="index.html" class="btn-back">◀ Quay Lại</a>
+            <a href="index.html" class="btn-back">◀ Quay Lại Trang Chủ</a>
         </header>
 
+        <!-- LƯƯ Ý GIAO DỊCH -->
         <div class="shop-notice">
-            <strong>📢 HƯỚNG DẪN GIAO DỊCH VÀ MUA HÀNG:</strong>
+            <strong>📢 QUY TRÌNH GIAO DỊCH AN TOÀN:</strong>
             <ul>
-                <li>Mọi giao dịch vui lòng liên hệ trực tiếp với <strong>Admin Server</strong> để tránh lừa đảo.</li>
-                <li>Vật phẩm và thú buff sẽ được chuyển trực tiếp vào tài khoản / bộ tộc của bạn sau khi kiểm tra giao dịch thành công.</li>
-                <li>Hỗ trợ thanh toán linh hoạt qua các ngân hàng nội địa hoặc ví điện tử.</li>
+                <li>Bấm nút <strong>"MUA NGAY"</strong> hệ thống sẽ kết nối bạn thẳng tới phòng giao dịch Discord của Server.</li>
+                <li>Mọi gói Amber và Trang bị sẽ được Admin giải ngân trực tiếp vào nhân vật/Tribe của bạn sau khi đối soát xong.</li>
             </ul>
         </div>
 
-        <main class="shop-grid">
-            
-            <div class="product-card">
-                <div class="product-img"><span>💎</span></div>
-                <div class="product-info">
-                    <h3>Gói Cổ Thạch (Amber)</h3>
-                    <p>Cung cấp số lượng Amber lớn để mua sắm các tiện ích độc quyền trực tiếp trong game.</p>
+        <!-- DANH MỤC 1: HỔ PHÁCH -->
+        <section>
+            <div class="section-title">💎 GÓI HỔ PHÁCH (AMBER PACKAGES)</div>
+            <div class="shop-grid">
+                
+                <!-- Gói 1 -->
+                <div class="product-card">
+                    <div class="product-img"><span>💎</span></div>
+                    <div class="product-info">
+                        <h3>1.000 Hổ Phách</h3>
+                        <p>Gói sơ cấp dành cho Tamer cày cuốc nhẹ nhàng.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">40.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
                 </div>
-                <div class="product-footer">
-                    <div class="product-price">Liên hệ Admin</div>
-                    <a href="https://zalo.me/..." target="_blank" class="btn-buy">Mua Ngay</a>
+
+                <!-- Gói 2 -->
+                <div class="product-card">
+                    <div class="product-img"><span>💎</span></div>
+                    <div class="product-info">
+                        <h3>5.000 Hổ Phách</h3>
+                        <p>Gói cơ bản hỗ trợ sắm sửa tiện ích.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">110.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
                 </div>
+
+                <!-- Gói 3 -->
+                <div class="product-card">
+                    <div class="product-img"><span>💎</span></div>
+                    <div class="product-info">
+                        <h3>10.000 Hổ Phách</h3>
+                        <p>Gói trung cấp được ưa chuộng nhiều.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">180.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Gói 4 -->
+                <div class="product-card">
+                    <div class="product-img"><span>💎</span></div>
+                    <div class="product-info">
+                        <h3>30.000 Hổ Phách</h3>
+                        <p>Gói cao cấp, thoải mái chi tiêu shopping.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">250.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Gói 5 -->
+                <div class="product-card">
+                    <div class="product-img"><span>💎</span></div>
+                    <div class="product-info">
+                        <h3>50.000 Hổ Phách</h3>
+                        <p>Gói đại gia, nâng cấp không lo nghĩ.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">350.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Gói 6 -->
+                <div class="product-card">
+                    <div class="product-img"><span>💎</span></div>
+                    <div class="product-info">
+                        <h3>80.000 Hổ Phách</h3>
+                        <p>Gói siêu cấp tích trữ Amber số lượng lớn.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">500.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Gói 7 -->
+                <div class="product-card">
+                    <div class="product-img"><span>💎</span></div>
+                    <div class="product-info">
+                        <h3>120.000 Hổ Phách</h3>
+                        <p>Gói cực đại cho các bộ tộc lớn cày chiến.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">750.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Gói 8 -->
+                <div class="product-card">
+                    <div class="product-img"><span>💎</span></div>
+                    <div class="product-info">
+                        <h3>200.000 Hổ Phách</h3>
+                        <p>Gói tối thượng - Cực kỳ tiết kiệm và tối ưu.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">900.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Gói 9 -->
+                <div class="product-card" style="border-top-color: var(--success-color);">
+                    <div class="product-img"><span>♾️</span></div>
+                    <div class="product-info">
+                        <h3>Hổ Phách Không Giới Hạn</h3>
+                        <p>Gói VIP đặc quyền tối cao, xài tẹt ga vĩnh viễn.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">1.350.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
+                </div>
+
             </div>
+        </section>
 
-            <div class="product-card">
-                <div class="product-img"><span>🦖</span></div>
-                <div class="product-info">
-                    <h3>Thú Khủng Long Buff Level</h3>
-                    <p>Tùy chọn các dòng thú chiến hoặc thồ hàng (Gigan, Rex, Quetzal...) được buff cấp độ cực cao.</p>
+        <!-- DANH MỤC 2: VŨ KHÍ & TRANG BỊ -->
+        <section>
+            <div class="section-title">⚔️ VŨ KHÍ & TRANG BỊ (GEARS)</div>
+            <div class="shop-grid">
+                
+                <!-- Item 1 -->
+                <div class="product-card">
+                    <div class="product-img"><span>⚔️</span></div>
+                    <div class="product-info">
+                        <h3>Vũ Khí Huyền Thoại</h3>
+                        <p>Bất kỳ một món vũ khí Huyền Thoại tự chọn chỉ số VIP.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">200.000đ/Món</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
                 </div>
-                <div class="product-footer">
-                    <div class="product-price">Giá Theo Loại</div>
-                    <a href="https://zalo.me/..." target="_blank" class="btn-buy">Mua Ngay</a>
+
+                <!-- Item 2 -->
+                <div class="product-card">
+                    <div class="product-img"><span>🤖</span></div>
+                    <div class="product-info">
+                        <h3>Bộ Tek Huyền Thoại</h3>
+                        <p>Trọn bộ giáp Tek Tier phẩm chất Huyền Thoại tối tân.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">500.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
                 </div>
+
+                <!-- Item 3 -->
+                <div class="product-card">
+                    <div class="product-img"><span>🦾</span></div>
+                    <div class="product-info">
+                        <h3>Bộ Tek Sử Thi</h3>
+                        <p>Trọn bộ giáp Tek Tier phẩm chất Sử Thi cực mạnh.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">350.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="product-card">
+                    <div class="product-img"><span>⛓️</span></div>
+                    <div class="product-info">
+                        <h3>Bộ Giáp Kim Loại</h3>
+                        <p>Trọn bộ giáp sắt cứng cáp bảo vệ Tamer toàn diện.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">180.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="product-card">
+                    <div class="product-img"><span>💥</span></div>
+                    <div class="product-info">
+                        <h3>Bộ Giáp Chống Nổ</h3>
+                        <p>Bộ trang bị đặc chủng giảm thiểu sát thương cháy nổ.</p>
+                    </div>
+                    <div class="product-footer">
+                        <div class="product-price">250.000đ</div>
+                        <a href="https://discord.gg/Nzwg5mRs" target="_blank" class="btn-buy">Mua Ngay</a>
+                    </div>
+                </div>
+
             </div>
+        </section>
 
-            <div class="product-card">
-                <div class="product-img"><span>⛏️</span></div>
-                <div class="product-info">
-                    <h3>Combo Nguyên Liệu Khai Thác</h3>
-                    <p>Các gói nguyên liệu nặng ký bao gồm Kim loại (Metal), Thủy tinh đen (Obsidian), Element...</p>
-                </div>
-                <div class="product-footer">
-                    <div class="product-price">Từng Gói Combo</div>
-                    <a href="https://zalo.me/..." target="_blank" class="btn-buy">Mua Ngay</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img"><span>🚀</span></div>
-                <div class="product-info">
-                    <h3>Gói Khởi Đầu VIP (Starter Pack)</h3>
-                    <p>Bao gồm vũ khí, giáp chỉ số cao và thú cưỡi hỗ trợ giai đoạn đầu cho những ai bận rộn.</p>
-                </div>
-                <div class="product-footer">
-                    <div class="product-price">Ưu Đãi Lớn</div>
-                    <a href="https://zalo.me/..." target="_blank" class="btn-buy">Mua Ngay</a>
-                </div>
-            </div>
-
-        </main>
-
+        <!-- FOOTER -->
         <footer>
-            &copy; 2026 RAW ARK PVE | Cửa Hàng Vận Hành Bởi <span>HOANGKUN</span>
+            &copy; 2026 RAW ARK PVE | Hệ Thống Vận Hành Bởi <span>HOANGKUN</span>
         </footer>
 
     </div>
