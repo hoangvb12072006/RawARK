@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAW ARK PVE - Server Sinh Tồn Đẳng Cấp</title>
+    <title>Raw ARK (PVE) - Server Sinh Tồn Lâu Lăm</title>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -17,7 +17,6 @@
             background-color: #030a11;
             color: #e2e8f0;
             min-height: 100vh;
-            /* Hình nền không gian tối */
             background-image: 
                 linear-gradient(rgba(3, 10, 17, 0.85), rgba(3, 10, 17, 0.95)),
                 url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2000');
@@ -31,7 +30,7 @@
         }
 
         .container {
-            max-width: 1050px;
+            max-width: 1100px;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -41,26 +40,26 @@
         /* ----- HEADER ----- */
         .header {
             text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .header h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            color: #00f2fe;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 0 15px rgba(0, 242, 254, 0.6), 0 0 30px rgba(0, 242, 254, 0.2);
             margin-bottom: 5px;
         }
 
-        .header p {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            letter-spacing: 2px;
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #00f2fe;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+            margin-bottom: 10px;
         }
 
-        /* ----- BADGES (Thẻ thông số nhỏ) ----- */
+        .header p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            letter-spacing: 1px;
+        }
+
+        /* ----- BADGES (Thẻ thông số) ----- */
         .badges-wrapper {
             display: flex;
             justify-content: center;
@@ -71,14 +70,13 @@
         .tek-badge {
             background: rgba(0, 242, 254, 0.05);
             border: 1px solid #00f2fe;
-            padding: 8px 25px;
+            padding: 8px 20px;
             border-radius: 4px;
             font-size: 1rem;
             font-weight: 600;
             color: #fff;
             box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.2);
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .tek-badge span {
@@ -87,15 +85,15 @@
             font-weight: 700;
         }
 
-        /* Nút tham gia */
+        /* ----- NÚT THAM GIA ----- */
         .btn-wrapper {
             text-align: center;
-            margin-top: 15px;
+            margin-top: 5px;
         }
 
         .btn-join {
             display: inline-block;
-            padding: 15px 40px;
+            padding: 12px 35px;
             font-size: 1.2rem;
             font-weight: 700;
             color: #030a11;
@@ -116,49 +114,27 @@
             transform: scale(1.05);
         }
 
-        /* ----- ABOUT SECTION ----- */
-        .about-box {
-            background: rgba(10, 20, 35, 0.6);
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            border-left: 4px solid #00f2fe;
-            padding: 25px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .about-box h2 {
-            color: #00f2fe;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
-
-        .about-box p {
-            color: #cbd5e1;
-            line-height: 1.6;
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* ----- LƯỚI GRID CHO QUÀ & LUẬT ----- */
+        /* ----- GRID LAYOUT ----- */
         .grid-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
         }
 
         .tek-card {
             background: rgba(10, 20, 35, 0.7);
             border: 1px solid rgba(0, 242, 254, 0.4);
             border-radius: 8px;
-            padding: 30px;
+            padding: 25px;
             position: relative;
             box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.1), 0 10px 30px rgba(0,0,0,0.6);
             backdrop-filter: blur(10px);
         }
 
-        /* Góc cắt trang trí viễn tưởng */
         .tek-card::before {
             content: '';
             position: absolute;
@@ -178,75 +154,126 @@
         }
 
         .tek-card h2 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: #fff;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 1px dashed rgba(0, 242, 254, 0.3);
             text-transform: uppercase;
-        }
-
-        /* FIX LỖI DANH SÁCH QUÀ TÂN THỦ DÍNH CHỮ */
-        .gift-list {
-            list-style: none;
-        }
-
-        .gift-list li {
             display: flex;
-            justify-content: space-between; /* Đẩy 2 thẻ span ra 2 mép */
             align-items: center;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            background: rgba(255,255,255,0.03);
-            padding: 10px 15px;
-            border-radius: 4px;
-            border-left: 2px solid #00f2fe;
+            gap: 10px;
         }
 
-        .gift-list .gift-name {
-            color: #cbd5e1;
-        }
-
-        .gift-list .gift-val {
-            color: #00f2fe;
-            font-weight: 700;
-        }
-
-        /* FIX LỖI CỘT LUẬT LỆ LỆCH CHỮ */
-        .rule-list {
+        /* ----- LISTS (Quà & Ưu điểm) ----- */
+        .feature-list {
             list-style: none;
         }
 
-        .rule-list li {
+        .feature-list li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: #cbd5e1;
             display: flex;
             align-items: flex-start;
-            gap: 15px; /* Tạo khoảng cách an toàn giữa tiêu đề và nội dung */
-            margin-bottom: 18px;
+            gap: 10px;
+        }
+
+        .feature-list li::before {
+            content: '✨';
+            flex-shrink: 0;
+        }
+
+        .highlight {
+            color: #00f2fe;
+            font-weight: bold;
+        }
+
+        /* ----- NHIỆM VỤ ALPHA ----- */
+        .alpha-box {
+            background: rgba(255, 51, 102, 0.05);
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .alpha-box span {
+            color: #ff3366;
+            font-weight: bold;
+        }
+
+        .alpha-rewards {
+            list-style: none;
+        }
+
+        .alpha-rewards li {
+            background: rgba(255, 255, 255, 0.03);
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-left: 3px solid #ff3366;
+            display: flex;
+            justify-content: space-between;
             font-size: 1.05rem;
         }
 
-        .rule-list .rule-title {
-            color: #00f2fe;
-            font-weight: 700;
-            min-width: 120px; /* Cố định độ rộng để các dòng dưới thẳng hàng */
-            flex-shrink: 0; /* Không cho phép nhãn bị ép nhỏ lại */
+        /* ----- BỘ LUẬT 2 CỘT ----- */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 30px;
         }
 
-        .rule-list .rule-desc {
+        .rules-grid li {
+            list-style: none;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 1rem;
             color: #cbd5e1;
-            line-height: 1.6;
+            line-height: 1.4;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
         }
 
-        .danger-text {
+        .rules-grid li::before {
+            content: '❌';
+            flex-shrink: 0;
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        .rule-danger {
             color: #ff3366;
             font-weight: bold;
-            text-shadow: 0 0 5px rgba(255, 51, 102, 0.5);
+        }
+
+        /* ----- STORE BANNER ----- */
+        .store-banner {
+            background: linear-gradient(90deg, rgba(10,20,35,0.8) 0%, rgba(0,242,254,0.1) 50%, rgba(10,20,35,0.8) 100%);
+            border-top: 1px solid #00f2fe;
+            border-bottom: 1px solid #00f2fe;
+            text-align: center;
+            padding: 15px;
+            color: #fff;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .store-banner span {
+            color: #f59e0b; /* Màu vàng Gold */
+            font-weight: bold;
         }
 
         /* ----- FOOTER ----- */
         .footer {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
             color: #64748b;
             font-size: 0.95rem;
         }
@@ -256,12 +283,11 @@
             font-weight: 600;
         }
 
-        /* Responsive Mobile */
-        @media (max-width: 800px) {
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 900px) {
             .grid-layout { grid-template-columns: 1fr; }
-            .header h1 { font-size: 3rem; }
-            .rule-list li { flex-direction: column; gap: 5px; } /* Trên điện thoại sẽ tự động rớt xuống 2 dòng cho dễ đọc */
-            .rule-list .rule-title { min-width: auto; }
+            .rules-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -270,80 +296,76 @@
     <div class="container">
         
         <header class="header">
-            <h1>RAW ARK PVE</h1>
-            <p>🦕 Bền Vững - Công Bằng - Chuẩn Sinh Tồn 🦖</p>
+            <h1>RAW ARK (PVE)</h1>
+            <p>Dành cho những ai thích sinh tồn lâu năm chơi chill chill 🥰</p>
         </header>
 
         <div class="badges-wrapper">
-            <div class="tek-badge">Kinh nghiệm <span>X2</span></div>
-            <div class="tek-badge">Thuần hóa <span>X3</span></div>
-            <div class="tek-badge">Thu thập <span>X2</span></div>
-            <div class="tek-badge">Lai tạo <span>X5</span></div>
-            <div class="tek-badge">Chế Độ <span>BRUTAL</span></div>
+            <div class="tek-badge">Slot <span>20 (Sẽ tăng)</span></div>
+            <div class="tek-badge">Tuổi thọ <span>2-3 Năm+</span></div>
+            <div class="tek-badge">Sự kiện <span>Mỗi Tháng</span></div>
         </div>
 
         <div class="btn-wrapper">
-            <a href="https://zalo.me/..." target="_blank" class="btn-join">Tham Gia Server Ngay</a>
-        </div>
-
-        <div class="about-box">
-            <h2>VỀ CHÚNG TÔI</h2>
-            <p>Bạn đã chán ngấy các server lạm phát, hay những người chơi "toxic"? Nơi chúng tôi giữ nguyên bản chất sinh tồn cày cuốc, nói không với thương mại hóa, tạo sân chơi công bằng nhất cho mọi Tamer!</p>
+            <a href="https://zalo.me/..." target="_blank" class="btn-join">Tham Gia Server</a>
         </div>
 
         <div class="grid-layout">
             
             <div class="tek-card">
-                <h2>🎁 Hỗ Trợ Tân Thủ</h2>
-                <ul class="gift-list">
-                    <li>
-                        <span class="gift-name">Thú cưỡi cơ bản</span>
-                        <span class="gift-val">X Saddle</span>
-                    </li>
-                    <li>
-                        <span class="gift-name">Bộ trang bị bảo vệ</span>
-                        <span class="gift-val">Giáp Sắt</span>
-                    </li>
-                    <li>
-                        <span class="gift-name">Công cụ khai thác</span>
-                        <span class="gift-val">Metal Tools</span>
-                    </li>
-                    <li>
-                        <span class="gift-name">Vật phẩm sinh tồn</span>
-                        <span class="gift-val">Food & Thuốc</span>
-                    </li>
+                <h2>🎁 Quà Tặng & Ưu Điểm</h2>
+                <div style="margin-bottom: 15px; padding: 10px; background: rgba(0,242,254,0.1); border-left: 3px solid #00f2fe;">
+                    <strong style="color: #fff;">Quà Mới Vào:</strong> Nhận ngẫu nhiên đồ cực chất 🚀
+                </div>
+                <ul class="feature-list">
+                    <li>Được phép xây dựng nhà trong <span class="highlight">Hang nước</span>.</li>
+                    <li>Được phép xây dựng nhà ở <span class="highlight">Đảo Thịt (Dead Island)</span>.</li>
+                    <li>Sự kiện diễn ra đều đặn <span class="highlight">mỗi tháng một lần</span> với các phần quà giá trị.</li>
                 </ul>
-                <p style="margin-top: 15px; font-size: 0.9rem; color: #64748b; font-style: italic;">
-                    * Lưu ý: Hãy nhắn tin trực tiếp cho Admin trên nhóm để nhận quà ngay khi vào game.
-                </p>
             </div>
 
             <div class="tek-card">
-                <h2>⚠️ Bộ Luật Server</h2>
-                <ul class="rule-list">
+                <h2 style="color: #ff3366; border-bottom-color: rgba(255, 51, 102, 0.3);">⚔️ Nhiệm Vụ Alpha</h2>
+                <div class="alpha-box">
+                    <p>Móc Kill Alpha <span>không giới hạn</span>!</p>
+                    <p style="margin-top: 5px; font-size: 0.85rem;">* Yêu cầu chụp ảnh xác Alpha và mang vật chứng gửi cho Admin. Nếu phát hiện ảnh trùng lặp sẽ bị phạt cả nhóm và <span>cấm nhận quà vĩnh viễn</span>.</p>
+                </div>
+                <ul class="alpha-rewards">
                     <li>
-                        <span class="rule-title">► Tài nguyên:</span>
-                        <span class="rule-desc">Cấm xây chặn hang động, cấm chặn núi kim loại và bãi Obsidian.</span>
+                        <span>🦖 Kill Rex Alpha</span>
+                        <span style="color: #ff3366; font-weight: bold;">Nhận 10 x3</span>
                     </li>
                     <li>
-                        <span class="rule-title">► Lag Server:</span>
-                        <span class="rule-desc">Không xả đồ rác ra map, không thả rông thú ngoài khu vực Base của bạn.</span>
-                    </li>
-                    <li>
-                        <span class="rule-title">► Giao tiếp:</span>
-                        <span class="rule-desc">Tôn trọng người chơi khác, nghiêm cấm phá hoại công trình Tribe bạn.</span>
-                    </li>
-                    <li>
-                        <span class="rule-title">► Gian lận:</span>
-                        <span class="rule-desc">Sử dụng phần mềm thứ 3 (Hack/Bug) = <span class="danger-text">BAN VĨNH VIỄN</span>.</span>
+                        <span>🦕 Kill Mosa Alpha</span>
+                        <span style="color: #ff3366; font-weight: bold;">Nhận 15 x15</span>
                     </li>
                 </ul>
+            </div>
+
+            <div class="tek-card full-width">
+                <h2 style="color: #f59e0b; border-bottom-color: rgba(245, 158, 11, 0.3);">⚠️ Nội Quy Server</h2>
+                <ul class="rules-grid">
+                    <li>Không văng tục chửi bậy trong nhóm.</li>
+                    <li>Không xây nhà QUÁ TO.</li>
+                    <li>Không được xây nhà ngay trụ.</li>
+                    <li>Không được phép giao dịch (Trừ khi Admin cho phép).</li>
+                    <li>Không được đem Gigan, Grif, Rex vào hang.</li>
+                    <li>Không phối thú bừa bãi rồi bỏ không claim.</li>
+                    <li>Không chia sẻ pass cho bất kỳ ai (Trừ khi Adm cho phép).</li>
+                    <li>Không được xây nhà trong các hang (ngoại trừ hang nước).</li>
+                    <li>Người mua thú nếu offline game mà không chuyển giao cho mem/tribe khác sẽ bị tịch thu thú.</li>
+                    <li>Không được phép dùng hack, spam <span class="rule-danger">(Phát hiện = Ban/Kick thẳng VV)</span>.</li>
+                </ul>
+            </div>
+
+            <div class="store-banner full-width">
+                🛒 <span>Cửa Hàng Server:</span> Cung cấp Nguyên liệu, Thú Buff Level, Amber... vv
             </div>
 
         </div>
 
         <div class="footer">
-            &copy; 2026 RAW ARK PVE | Thiết kế và Phát triển bởi <span>Nguyễn Việt Hoàng</span>
+            &copy; 2026 RAW ARK PVE | Code by <span>Nguyễn Việt Hoàng (HOANGKUN)</span>
         </div>
 
     </div>
