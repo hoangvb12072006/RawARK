@@ -3,438 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUU Kỷ Yếu - Thanh Xuân Rực Rỡ</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>Raw ARK PvE - Tuyển Thành Viên ARK Mobile</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=Nunito:wght@400;600;700;800&display=swap');
-
-        :root {
-            --bg-color: #fdfaf0;
-            --grid-color: rgba(0, 0, 0, 0.08);
-            --main-text: #111;
-            --accent-red: #ff4757;
-            --accent-yellow: #feca57;
-            --accent-blue: #48dbfb;
-            --accent-green: #1dd1a1;
-            --shadow: 8px 8px 0px #111;
-            --border-thick: 4px solid #111;
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
-            font-family: 'Nunito', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--main-text);
-            background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 40px 40px;
-            overflow-x: hidden;
+            background-color: #121812;
+            color: #e0e0e0;
             line-height: 1.6;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Space Grotesk', sans-serif;
-            text-transform: uppercase;
-            font-weight: 900;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
+        /* Container */
         .container {
-            max-width: 1300px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
-        /* --- MARQUEE Ticker --- */
-        .marquee-wrapper {
-            background: var(--accent-red);
-            color: #fff;
-            border-bottom: var(--border-thick);
-            border-top: var(--border-thick);
-            padding: 10px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            display: flex;
+        /* Hero Section */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(18, 24, 18, 1)), 
+                        url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000') no-repeat center center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 3px solid #4caf50;
         }
-        .marquee {
-            display: inline-block;
-            animation: scroll 20s linear infinite;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
+
+        header h1 {
+            font-size: 3rem;
+            color: #4caf50;
             text-transform: uppercase;
-        }
-        .marquee span { padding: 0 50px; }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* --- HEADER --- */
-        .header {
+        header p {
+            font-size: 1.2rem;
+            color: #ffb300;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .btn-join {
+            display: inline-block;
+            background-color: #ffb300;
+            color: #121812;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 179, 0, 0.4);
+        }
+
+        .btn-join:hover {
+            background-color: #4caf50;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Sections General */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #233023;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #4caf50;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #ffb300;
+            margin: 10px auto 0;
+        }
+
+        /* Server Info Grid */
+        .grid-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: #1a231a;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #4caf50;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #ffb300;
+            margin-bottom: 15px;
+        }
+
+        .card ul {
+            list-style-type: none;
+        }
+
+        .card ul li {
+            margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin: 40px 0 60px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .logo-box { position: relative; }
-        .logo-text {
-            font-size: 6rem;
-            color: #fff;
-            -webkit-text-stroke: 3px var(--main-text);
-            text-shadow: 6px 6px 0px var(--accent-red);
-            line-height: 0.8;
-            letter-spacing: -3px;
-        }
-        .sub-logo {
-            font-size: 2.5rem;
-            color: var(--main-text);
-            background: var(--accent-yellow);
-            display: inline-block;
-            padding: 0 15px;
-            border: var(--border-thick);
-            transform: rotate(-3deg);
-            margin-top: 10px;
-        }
-        .contact-info {
-            background: #fff;
-            border: var(--border-thick);
-            padding: 20px 30px;
-            box-shadow: var(--shadow);
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-        .contact-info a { text-decoration: none; color: var(--main-text); transition: 0.2s; }
-        .contact-info a:hover { color: var(--accent-red); }
-
-        /* --- HERO BANNER --- */
-        .hero {
-            position: relative;
-            height: 600px;
-            background: url('https://picsum.photos/seed/class/1200/600') center/cover;
-            border: var(--border-thick);
-            box-shadow: 12px 12px 0px var(--accent-blue);
-            margin-bottom: 80px;
-            border-radius: 20px;
-            display: flex;
-            align-items: flex-end;
-            padding: 40px;
-        }
-        .hero-text {
-            background: #fff;
-            padding: 20px 40px;
-            border: var(--border-thick);
-            box-shadow: var(--shadow);
-            max-width: 600px;
-        }
-        .hero-text h2 { font-size: 2.5rem; color: var(--accent-red); }
-        .hero-text p { font-size: 1.2rem; font-weight: 600; margin-top: 10px; }
-
-        /* --- COMPONENT TITLE --- */
-        .section-title {
-            font-size: 3.5rem;
-            margin-bottom: 50px;
-            display: inline-block;
-            background: #fff;
-            padding: 10px 30px;
-            border: var(--border-thick);
-            box-shadow: var(--shadow);
-        }
-        .title-yellow { background: var(--accent-yellow); transform: rotate(-2deg); }
-        .title-green { background: var(--accent-green); transform: rotate(1deg); }
-        .title-blue { background: var(--accent-blue); transform: rotate(-1deg); }
-
-        /* --- MEMBER ALBUM (Polaroids) --- */
-        .grid-album {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-bottom: 100px;
-        }
-        .polaroid {
-            background: #fff;
-            padding: 15px 15px 35px 15px;
-            border: var(--border-thick);
-            box-shadow: var(--shadow);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            cursor: pointer;
-        }
-        .polaroid:nth-child(3n+1) { transform: rotate(-3deg); }
-        .polaroid:nth-child(3n+2) { transform: rotate(2deg); }
-        .polaroid:nth-child(3n+3) { transform: rotate(-1deg); }
-        .polaroid:hover {
-            transform: scale(1.08) rotate(0deg) translateY(-10px);
-            z-index: 10;
-            box-shadow: 15px 15px 0px var(--accent-red);
-        }
-        .photo {
-            width: 100%;
-            height: 300px;
-            border: 3px solid var(--main-text);
-            object-fit: cover;
-            filter: grayscale(20%);
-            transition: 0.3s;
-        }
-        .polaroid:hover .photo { filter: grayscale(0%); }
-        .polaroid-text { text-align: center; margin-top: 20px; }
-        .polaroid-text h3 { font-size: 1.8rem; letter-spacing: -1px; }
-        .polaroid-text p { font-weight: 600; color: #555; }
-        .badge {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: var(--accent-yellow);
-            padding: 10px;
-            border: 3px solid #111;
-            border-radius: 50%;
-            font-weight: 900;
-            font-family: 'Space Grotesk';
         }
 
-        /* --- TIMELINE SECTION --- */
-        .timeline-section {
-            background: #fff;
-            border: var(--border-thick);
-            padding: 50px;
-            box-shadow: var(--shadow);
-            margin-bottom: 100px;
-            position: relative;
-        }
-        .timeline-item {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 40px;
-            align-items: center;
-        }
-        .time-year {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--accent-red);
-            min-width: 150px;
-            text-align: right;
-            text-shadow: 2px 2px 0px var(--accent-yellow);
-        }
-        .time-dot {
-            width: 25px;
-            height: 25px;
-            background: var(--main-text);
-            border-radius: 50%;
-            position: relative;
-        }
-        .time-dot::after {
-            content: '';
-            position: absolute;
-            top: 25px; left: 10px;
-            width: 5px; height: 100px;
-            background: var(--main-text);
-        }
-        .timeline-item:last-child .time-dot::after { display: none; }
-        .time-content {
-            background: var(--bg-color);
-            padding: 20px;
-            border: var(--border-thick);
-            border-radius: 10px;
-            flex-grow: 1;
-        }
-
-        /* --- MASONRY GALLERY (Khoảnh khắc) --- */
-        .masonry-gallery {
-            column-count: 3;
-            column-gap: 20px;
-            margin-bottom: 100px;
-        }
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 20px;
-            border: var(--border-thick);
-            box-shadow: 6px 6px 0px rgba(0,0,0,0.2);
-            transition: 0.3s;
-        }
-        .masonry-item:hover { transform: translateY(-5px); box-shadow: 8px 8px 0px var(--accent-red); }
-        .masonry-item img {
-            width: 100%;
-            display: block;
-        }
-
-        /* --- MAP & FOOTER --- */
-        .map-section {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        .map-box {
-            flex: 2;
-            border: var(--border-thick);
-            box-shadow: var(--shadow);
-            height: 450px;
-            background: #fff;
-        }
-        .map-box iframe { width: 100%; height: 100%; border: none; }
-        
-        .footer {
+        /* Gifts Section */
+        .gift-box {
+            background: linear-gradient(135deg, #1a231a, #2a3a2a);
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
-            padding: 50px 20px;
-            border-top: var(--border-thick);
-            background: var(--main-text);
-            color: #fff;
-            margin-top: 50px;
+            border: 1px solid #ffb300;
         }
-        .footer h2 { color: var(--accent-yellow); margin-bottom: 10px; }
 
-        @media (max-width: 768px) {
-            .masonry-gallery { column-count: 2; }
-            .header { justify-content: center; text-align: center; }
-            .map-section { flex-direction: column; }
-            .hero { height: 400px; }
-            .time-year { min-width: 80px; font-size: 1.5rem; }
-            .timeline-item { gap: 15px; }
+        .gift-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
-        @media (max-width: 480px) {
-            .masonry-gallery { column-count: 1; }
-            .logo-text { font-size: 4rem; }
+
+        .gift-item {
+            background-color: #121812;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid #4caf50;
+            font-size: 0.95rem;
+        }
+
+        /* Rules Section */
+        .rules-list {
+            background-color: #1a231a;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .rules-list ol {
+            padding-left: 20px;
+        }
+
+        .rules-list li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .rules-list strong {
+            color: #e53935;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #0b0f0b;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            section h2 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="marquee-wrapper">
-        <div class="marquee">
-            <span>✨ LƯU GIỮ THANH XUÂN</span>
-            <span>📸 GUU KỶ YẾU</span>
-            <span>🎓 TỐT NGHIỆP RỒI</span>
-            <span>❤️ MÃI LÀ ANH EM</span>
-            <span>✨ LƯU GIỮ THANH XUÂN</span>
-            <span>📸 GUU KỶ YẾU</span>
-            <span>🎓 TỐT NGHIỆP RỒI</span>
-            <span>❤️ MÃI LÀ ANH EM</span>
+    <!-- Hero Section -->
+    <header>
+        <div class="container">
+            <h1>RAW ARK PvE</h1>
+            <p>🦕 Server Sinh Tồn Chân Thực - Cộng Đồng Văn Minh - Không Pay To Win 🦖</p>
+            <!-- Thay link Nhóm của bạn vào href dưới đây -->
+            <a href="https://zalo.me/... hoặc https://discord.gg/..." target="_blank" class="btn-join">Gia Nhập Server Ngay</a>
         </div>
-        <div class="marquee">
-            <span>✨ LƯU GIỮ THANH XUÂN</span>
-            <span>📸 GUU KỶ YẾU</span>
-            <span>🎓 TỐT NGHIỆP RỒI</span>
-            <span>❤️ MÃI LÀ ANH EM</span>
-            <span>✨ LƯU GIỮ THANH XUÂN</span>
-            <span>📸 GUU KỶ YẾU</span>
-            <span>🎓 TỐT NGHIỆP RỒI</span>
-            <span>❤️ MÃI LÀ ANH EM</span>
-        </div>
-    </div>
+    </header>
 
     <div class="container">
-        <div class="header">
-            <div class="logo-box">
-                <div class="logo-text">GUU</div>
-                <div class="sub-logo">STUDIO</div>
-            </div>
-            
-            <div class="contact-info">
-                <p><i class="fab fa-facebook" style="color:#0984e3;"></i> <a href="#">Guu Kỷ Yếu</a></p>
-                <p><i class="fab fa-tiktok" style="color:#000;"></i> <a href="#">@guukyyeu</a></p>
-                <p><i class="fas fa-phone-alt" style="color:#d63031;"></i> 0914 896 870</p>
-                <p><i class="fas fa-map-marker-alt" style="color:#00b894;"></i> 45 Trần Khánh Dư, Buôn Ma Thuột</p>
-            </div>
-        </div>
-
-        <div class="hero">
-            <div class="hero-text">
-                <h2>CHUYẾN XE THANH XUÂN</h2>
-                <p>"Cấp 3 là quãng thời gian bạn có thể làm những điều ngốc nghếch mà vẫn thấy nó đẹp đẽ vô cùng."</p>
-            </div>
-        </div>
-
-        <h2 class="section-title title-yellow">THÀNH VIÊN CỐT CÁN</h2>
         
-        <div class="grid-album">
-            <div class="polaroid">
-                <div class="badge">DEV</div>
-                <img src="https://picsum.photos/seed/hoang/500/600" alt="Hoàng" class="photo">
-                <div class="polaroid-text">
-                    <h3>Nguyễn Việt Hoàng</h3>
-                    <p>"Bàn phím mòn mỏi, tình anh em không mòn."</p>
-                </div>
-            </div>
+        <!-- Giới thiệu -->
+        <section id="about">
+            <h2>Về Chúng Tôi</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+                Bạn đã chán ngấy các server lạm phát, admin lạm quyền hay những bộ tộc "toxic"? 
+                Chào mừng đến với <strong>Raw ARK PvE</strong> trên ARK Mobile. Nơi chúng tôi giữ nguyên bản chất sinh tồn cày cuốc, 
+                nói không với thương mại hóa, tạo sân chơi công bằng và bền vững cho mọi Tamer!
+            </p>
+        </section>
 
-            <div class="polaroid">
-                <div class="badge">VIP</div>
-                <img src="https://picsum.photos/seed/thu/500/601" alt="Thu" class="photo">
-                <div class="polaroid-text">
-                    <h3>Đoàn Thị Thuỳ (Thu)</h3>
-                    <p>"Nụ cười năm ấy làm bừng sáng cả hành lang."</p>
+        <!-- Thông số Server -->
+        <section id="features">
+            <h2>Thông Số & Tính Năng</h2>
+            <div class="grid-info">
+                <div class="card">
+                    <h3>📊 Rate Server</h3>
+                    <ul>
+                        <li><span>EXP:</span> <strong>x2</strong></li>
+                        <li><span>Taming:</span> <strong>x3</strong></li>
+                        <li><span>Harvest:</span> <strong>x2</strong></li>
+                        <li><span>Breeding:</span> <strong>x5</strong></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>🛡️ Chế Độ Chơi</h3>
+                    <ul>
+                        <li><span>Thể loại:</span> <strong>PvE (Cày cuốc)</strong></li>
+                        <li><span>Độ khó:</span> <strong>Brutal / Hard</strong></li>
+                        <li><span>Hồi phục:</span> <strong>Ổn định</strong></li>
+                        <li><span>Anti-Cheat:</span> <strong>Cực nghiêm ngặt</strong></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>🤝 Tiện Ích Độc Quyền</h3>
+                    <ul>
+                        <li><span>Sự kiện:</span> <strong>Hàng tuần</strong></li>
+                        <li><span>Hỗ trợ:</span> <strong>Admin 24/7</strong></li>
+                        <li><span>Khu công cộng:</span> <strong>Khu Trade / Chợ</strong></li>
+                        <li><span>Cộng đồng:</span> <strong>Vui vẻ, giúp đỡ nhau</strong></li>
+                    </ul>
                 </div>
             </div>
+        </section>
 
-            <div class="polaroid">
-                <img src="https://picsum.photos/seed/class1/500/602" alt="Bạn 1" class="photo">
-                <div class="polaroid-text">
-                    <h3>Hội Bàn Cuối</h3>
-                    <p>"Học thì ít, ăn vặt thì nhiều."</p>
+        <!-- Quà Tân Thủ -->
+        <section id="gifts">
+            <h2>🎁 Hỗ Trợ Tân Thủ</h2>
+            <div class="gift-box">
+                <p style="font-size: 1.2rem; margin-bottom: 15px; color: #fff;">Chỉ cần vào server và liên hệ Admin, bạn sẽ nhận ngay gói quà khởi đầu cực chất:</p>
+                <div class="gift-list">
+                    <div class="gift-item">🦖 1 Thú cưỡi cơ bản (X saddle)</div>
+                    <div class="gift-item">🛡️ 1 Bộ giáp sắt (Chỉ số ổn định)</div>
+                    <div class="gift-item">⛏️ Bộ công cụ Kim Loại (Metal Tools)</div>
+                    <div class="gift-item">💊 Thức ăn và Thuốc tăng lực</div>
                 </div>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #ffb300;">*Quà tân thủ giúp bạn dễ dàng làm quen ở giai đoạn đầu, không làm mất chất cày cuốc!</p>
             </div>
+        </section>
 
-            <div class="polaroid">
-                <img src="https://picsum.photos/seed/class2/500/603" alt="Bạn 2" class="photo">
-                <div class="polaroid-text">
-                    <h3>Cán Bộ Lớp</h3>
-                    <p>"Chuyên gia ghi sổ đầu bài nhưng hay bao che."</p>
-                </div>
+        <!-- Luật Server -->
+        <section id="rules">
+            <h2>📜 Luật Server (Vui lòng đọc kỹ)</h2>
+            <div class="rules-list">
+                <ol>
+                    <li><strong>Không block tài nguyên lớn:</strong> Cấm xây nhà chặn hang động, đỉnh núi có kim loại/obsidian.</li>
+                    <li><strong>Ý thức công cộng:</strong> Không được thả khủng long bừa bãi ngoài đường gây lag server.</li>
+                    <li><strong>Tôn trọng người khác:</strong> Không xúc phạm, phân biệt vùng miền hay phá hoại công trình của bộ tộc khác.</li>
+                    <li><strong>Nghiêm cấm Hack/Bug:</strong> Phát hiện sử dụng phần mềm thứ 3 hoặc bug game sẽ bị <strong>BAN VĨNH VIỄN</strong>.</li>
+                </ol>
             </div>
-        </div>
+        </section>
 
-        <h2 class="section-title title-green">HÀNH TRÌNH ĐÃ QUA</h2>
-        <div class="timeline-section">
-            <div class="timeline-item">
-                <div class="time-year">LỚP 10</div>
-                <div class="time-dot"></div>
-                <div class="time-content">
-                    <h3>Ngày Tựu Trường Bỡ Ngỡ</h3>
-                    <p>Nhìn ai cũng lạ lẫm, nhút nhát, chưa biết rằng sau này sẽ thành cái chợ vỡ.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-year">LỚP 11</div>
-                <div class="time-dot"></div>
-                <div class="time-content">
-                    <h3>Quậy Phá & Hội Trại</h3>
-                    <p>Giai đoạn quậy nhất, bày đủ trò trêu thầy cô và thức xuyên đêm cắm trại 26/03.</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="time-year">LỚP 12</div>
-                <div class="time-dot"></div>
-                <div class="time-content">
-                    <h3>Áp Lực & Nước Mắt</h3>
-                    <p>Những buổi học thêm mệt mỏi, những bài thi thử, và khoảnh khắc ký tên lên áo trắng mùa hạ.</p>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title title-blue">KHOẢNH KHẮC NGẪU NHIÊN</h2>
-        <div class="masonry-gallery">
-            <div class="masonry-item"><img src="https://picsum.photos/seed/g1/400/600" alt="Gallery"></div>
-            <div class="masonry-item"><img src="https://picsum.photos/seed/g2/400/300" alt="Gallery"></div>
-            <div class="masonry-item"><img src="https://picsum.photos/seed/g3/400/500" alt="Gallery"></div>
-            <div class="masonry-item"><img src="https://picsum.photos/seed/g4/400/400" alt="Gallery"></div>
-            <div class="masonry-item"><img src="https://picsum.photos/seed/g5/400/700" alt="Gallery"></div>
-            <div class="masonry-item"><img src="https://picsum.photos/seed/g6/400/350" alt="Gallery"></div>
-        </div>
-
-        <h2 class="section-title" style="background: #fff;">ĐỊA CHỈ STUDIO</h2>
-        <div class="map-section">
-            <div class="map-box">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3892.6861214040985!2d108.0436894!3d12.6687002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3171f7d242fb3763%3A0xc312bba71bcafab8!2zNDUgVHLhuqduIEtow6FuaCBExrAsIFTDom4gTOG7o2ksIFRow6BuaCBwaOG7kSBCdcO0biBNYSBUaHXhu5l0LCDEkOG6r2sgTOG6r2s!5e0!3m2!1svi!2s!4v1715433600000!5m2!1svi!2s" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
     </div>
 
-    <div class="footer">
-        <h2>GUU KỶ YẾU</h2>
-        <p>Copyright © 2026. Made with ❤️ by Nguyễn Việt Hoàng.</p>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Raw ARK PvE Mobile. Thân thiện - Bền vững - Đẳng cấp.</p>
+        <p style="font-size: 0.8rem; margin-top: 5px;">Designed for ARK Mobile Players</p>
+    </footer>
 
 </body>
 </html>
